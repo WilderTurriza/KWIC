@@ -1,0 +1,37 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package arq_kwic.CapaVista;
+
+import java.util.Scanner;
+
+import arq_kwic.CapaOperacion.ControladorCadena;
+
+
+public class VistaCadena {
+    
+    ControladorCadena controlador = new ControladorCadena();
+
+    public void iniciar() {
+        String cadena=obtenerCadena();
+        mostrarFrases(controlador.generarFrases(cadena));
+    }
+
+    public String obtenerCadena(){
+        Scanner teclado = new Scanner(System.in);
+        String frase;
+        
+        System.out.print("Ingresa una frase: ");
+        frase = teclado.nextLine();
+        
+        return frase;
+    }
+    
+    public void mostrarFrases(String[] frases){
+        System.out.println("\nSalidas: ");
+        for(int i = 0; i < frases.length; i++){
+            System.out.println("["+(i+1)+"] "+frases[i]);
+         }
+    }
+}

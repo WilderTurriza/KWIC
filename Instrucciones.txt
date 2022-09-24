@@ -1,0 +1,28 @@
+En equipos, realizar el diseño y el código del programa KWIC (Key Word In Context)
+Recibe líneas
+Divide cada línea en palabras
+A cada línea se le aplica un desplazamiento circular usando las palabras, y se generan nuevas líneas
+Se remueve la primera palabra y se anexa al final
+Las líneas generadas se ordenan alfabéticamente
+Se muestra el resultado
+Ejemplo de entrada:
+
+    esta es una prueba
+
+Ejemplo de salida
+
+    es una prueba esta
+
+    esta es una prueba
+
+    prueba esta es una
+
+    una prueba esta es
+
+Entrega como mínimo:
+
+Código Fuente representativo (en el PDF, no aparte).
+Diagrama de Clases.
+Diagrama de secuencia del proceso.
+
+Formato de entrega: ADA_<Número>_<INICIALES>.pdf
