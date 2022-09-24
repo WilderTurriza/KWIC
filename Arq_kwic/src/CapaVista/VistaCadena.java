@@ -25,6 +25,7 @@ public class VistaCadena {
         mostrarEnPantalla("Ingresa una frase: ");
         frase = teclado.nextLine();
         
+        teclado.close();
         return frase;
     }
     
