@@ -22,16 +22,20 @@ public class VistaCadena {
         Scanner teclado = new Scanner(System.in);
         String frase;
         
-        System.out.print("Ingresa una frase: ");
+        mostrarEnPantalla("Ingresa una frase: ");
         frase = teclado.nextLine();
         
         return frase;
     }
     
     public void mostrarFrases(String[] frases){
-        System.out.println("\nSalidas: ");
+        mostrarEnPantalla("Salidas: ");
         for(int i = 0; i < frases.length; i++){
-            System.out.println("["+(i+1)+"] "+frases[i]);
+            mostrarEnPantalla("["+(i+1)+"] "+frases[i]);
          }
+    }
+
+    public void mostrarEnPantalla(String aviso){
+        System.out.println(aviso);
     }
 }
