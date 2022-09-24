@@ -35,7 +35,7 @@ public class ControladorCadena {
     }
     
     public String[] separar(String frase) {
-        ArrayList palabra = new ArrayList();
+        ArrayList<String> palabra = new ArrayList<>();
         
         for (int i = 0; i < frase.split(" ").length; i++) {
             palabra.add(i, frase.split(" ")[i]);
