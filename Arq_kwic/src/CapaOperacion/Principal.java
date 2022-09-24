@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package arq_kwic;
+package CapaOperacion;
 
-import arq_kwic.CapaVista.VistaCadena;
+import CapaVista.VistaCadena;
 
 
 public class Principal {
