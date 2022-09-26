@@ -1,10 +1,10 @@
 
-package CapaVista;
+package CapaPresentacion;
 
 public class Principal {
 
     /**
-     * @param args the command line arguments
+     * Clase principal del programa
      */
     public static void main(String[] args) {
         
