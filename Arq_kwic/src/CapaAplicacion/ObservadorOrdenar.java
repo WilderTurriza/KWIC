@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ObservadorOrdenar extends Observador{
 
-    List frases = new ArrayList<>();
+    private List frases = new ArrayList<>();
 
     public ObservadorOrdenar(Cadena cadena){
         this.sujeto=cadena;

@@ -1,14 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package CapaPresentacion;
 
 import java.util.Scanner;
 
-import CapaAplicacion.Cadena;
-import CapaAplicacion.ObservadorOrdenar;
-import CapaAplicacion.ObservadorRotar;
+import CapaAplicacion.*;
 
 /**
  * Clase encargada de pedir los datos al usuario e iniciar los observadores
