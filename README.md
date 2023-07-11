@@ -11,11 +11,11 @@ Establece que una clase, componente o microservicio debe tener una única respon
 ### Donde vemos este principio
 
 En la estructura que se está utilizando en el proyecto podemos ver paquetes que contienen clases con responsabilidades unicas.
-Entity: Contiene las clases que representa entidades o modelos de datos de la aplicación.
-Controller: Contiene las clases responsables de la interacción con el usuario. Reciben las solicitudes HTTP, procesan los datos necesarios y utilizan otros componentes (servicios) para realizar las operaciones requeridas. 
-Repository: Contiene las clases que se encarga de hacer todas las conexiones a la base de datos.
-Service: Contiene las clases que implementan la lógica de negocio de la aplicación
-DTO: Tiene las clases DTO de nuestras entidades donde nosotros vamos a poner solamente la información que vamos a necesitar o que queremos exponer, ya que no debemos exponer las entidades de la base de datos.
+- Entity: Contiene las clases que representa entidades o modelos de datos de la aplicación.
+- Controller: Contiene las clases responsables de la interacción con el usuario. Reciben las solicitudes HTTP, procesan los datos necesarios y utilizan otros componentes (servicios) para realizar las operaciones requeridas. 
+- Repository: Contiene las clases que se encarga de hacer todas las conexiones a la base de datos.
+- Service: Contiene las clases que implementan la lógica de negocio de la aplicación
+- DTO: Tiene las clases DTO de nuestras entidades donde nosotros vamos a poner solamente la información que vamos a necesitar o que queremos exponer, ya que no debemos exponer las entidades de la base de datos.
 
 ![SRP](SOLID/SRP.jpg)
 
