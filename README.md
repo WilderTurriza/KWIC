@@ -19,7 +19,7 @@ En la estructura que se está utilizando en el proyecto podemos ver paquetes que
 
 ![SRP](SOLID/SRP.jpg)
 
-Un ejemplo es la clases del paquete controller que son clases controladoras para cada una de nuestras entidades donde tenemos nuestros endpoints, se encargan únicamente de manejar las solicitudes HTTP entrantes, aquí tenemos los métodos get, post, put y delete. Estas clases se encargan de recibir los datos del cliente, interactuar con los servicios correspondientes y devolver las respuestas adecuadas. En este caso la clase LicenciaturaController interactuca con su propio LicenciaturaService.
+Un ejemplo es la clase del paquete controller que son clases controladoras para cada una de nuestras entidades donde tenemos nuestros endpoints, se encargan únicamente de manejar las solicitudes HTTP entrantes, aquí tenemos los métodos get, post, put y delete. Estas clases se encargan de recibir los datos del cliente, interactuar con los servicios correspondientes y devolver las respuestas adecuadas. En este caso la clase LicenciaturaController interactuca con su propio LicenciaturaService.
 
 ### **LicenciaturaController-SRP**
 ```java
