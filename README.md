@@ -6,12 +6,22 @@ Breve descripción de los principios SOLID..
 
 > Una clase debe hacer una cosa y, por lo tanto, debe tener una sola razón para cambiar.
 
+Establece que una clase, componente o microservicio debe tener una única responsabilidad. Esto significa que cada clase debe estar enfocada en realizar una única tarea o funcionalidad. Si una clase tiene múltiples responsabilidades, se vuelve más difícil de entender, mantener y modificar, ya que los cambios en una responsabilidad pueden afectar inadvertidamente a otras responsabilidades.
 
-Donde vemos este principio
+### Donde vemos este principio
+
+En la estructura que se está utilizando en el proyecto podemos ver paquetes que contienen clases con responsabilidades unicas.
+Entity: Contiene las clases que representa entidades o modelos de datos de la aplicación.
+Controller: Contiene las clases responsables de la interacción con el usuario. Reciben las solicitudes HTTP, procesan los datos necesarios y utilizan otros componentes (servicios) para realizar las operaciones requeridas. 
+Repository: Contiene las clases que se encarga de hacer todas las conexiones a la base de datos.
+Service: Contiene las clases que implementan la lógica de negocio de la aplicación
+DTO: Tiene las clases DTO de nuestras entidades donde nosotros vamos a poner solamente la información que vamos a necesitar o que queremos exponer, ya que no debemos exponer las entidades de la base de datos.
 
 ![SRP](SOLID/SRP.jpg)
 
-## **Bloques de código**
+Un ejemplo es la clases del paquete controller que son clases controladoras para cada una de nuestras entidades donde tenemos nuestros endpoints, se encargan únicamente de manejar las solicitudes HTTP entrantes, aquí tenemos los métodos get, post, put y delete. Estas clases se encargan de recibir los datos del cliente, interactuar con los servicios correspondientes y devolver las respuestas adecuadas. En este caso la clase LicenciaturaController interactuca con su propio LicenciaturaService.
+
+### **LicenciaturaController-SRP**
 ```java
 package edu.uday.coa.controller;
 
