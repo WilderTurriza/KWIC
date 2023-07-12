@@ -103,9 +103,9 @@ public interface LicenciaturaRepository extends JpaRepository <Licenciatura, Lon
 
 En nuestro proyecto, el cumplimiento de este principio se puede observar en la relación entre las clases Licenciatura, LicenciaturaRepository y LicenciaturaService.
 
-La clase Licenciatura representa una entidad en el sistema.
-La clase LicenciaturaRepository extiende JpaRepository, que es una interfaz proporcionada por Spring Boot para realizar operaciones de persistencia y búsqueda en la base de datos.
-La clase LicenciaturaService utiliza LicenciaturaRepository para realizar la lógica del negocio.
+- La clase Licenciatura representa una entidad en el sistema.
+- La clase LicenciaturaRepository extiende JpaRepository, que es una interfaz proporcionada por Spring Boot para realizar operaciones de persistencia y búsqueda en la base de datos.
+- La clase LicenciaturaService utiliza LicenciaturaRepository para realizar la lógica del negocio.
 
 Aquí es donde se cumple el principio de Sustitución de Liskov:
 
