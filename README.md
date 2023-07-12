@@ -153,22 +153,20 @@ public class LicenciaturaService {
 
 > Haz interfaces que sean específicas para un tipo de cliente.
 
-Donde vemos este principio
+El principio de segregación de interfaces establece que una clase no debe ser forzada a implementar interfaces que no utiliza. En otras palabras, solo se debe exigir a una clase que implemente los métodos que son relevantes para su comportamiento.
 
-![SRP](ruta/a/imagen/srp.png)
+### Donde vemos este principio
 
-## **Bloques de código**
-```java
-// Ejemplo de código SRP
-class MiClase {
-  // Implementación de la clase
-}
-```
+Este principio se ve reflejado en el proyecto al crear múltiples interfaces de diferentes responsabilidades (Una para cada entidad) en lugar de una sola interfaz grande.
+Al crear interfaces separadas para diferentes responsabilidades, nos aseguramos de que las clases services solo implementen los métodos que necesitan, haciendo que el código sea más fácil de mantener y legible.
+
+![ISP](SOLID/ISP.jpg)
+
 ## Principio de Inversión de Dependencia (DIP)
 
 > Depende de abstracciones, no de clases concretas.
 
-Donde vemos este principio
+### Donde vemos este principio
 
 ![SRP](ruta/a/imagen/srp.png)
 
