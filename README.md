@@ -82,7 +82,7 @@ En otras palabras, una clase debe diseñarse de tal manera que se pueda agregar 
 
 En el paquete repository tenemos interfaces que cumplen con la misma responsabilidad, puedo dar un ejemplo con LicenciaturaRepository que cumple con la responsabilidad de realizar operaciones de búsqueda y persistencia en la base de datos para la entidad Licenciatura.  Si se necesita agregar una nueva consulta o método personalizado en el repositorio, se puede hacer agregando un nuevo método sin modificar los métodos existentes. Esto cumple con el principio de Abierto/Cerrado, ya que el repositorio está abierto para su extensión al permitir agregar nuevos métodos sin modificar los existentes.
 
-Además, la interfaz LicenciaturaRepository extiende la interfaz JpaRepository, que proporciona métodos predefinidos, como findAll(), save(), deleteById(), que están diseñados para ser extendidos y personalizados según las necesidades de cada entidad. Al extender JpaRepository, podemos agregar nuestros propios métodos personalizados sin modificar los métodos predefinidos existentes, lo que cumple con el principio de OCP.
+Además, la interfaz LicenciaturaRepository extiende la interfaz JpaRepository propia de Spring Boot, que proporciona métodos predefinidos, como findAll(), save(), deleteById(), que están diseñados para ser extendidos y personalizados según las necesidades de cada entidad. Al extender JpaRepository, podemos agregar nuestros propios métodos personalizados sin modificar los métodos predefinidos existentes, lo que cumple con el principio de OCP.
 
 ### **LicenciaturaRepository-OCP**
 ```java
@@ -99,16 +99,55 @@ public interface LicenciaturaRepository extends JpaRepository <Licenciatura, Lon
 
 > Las clases derivadas deben ser sustituibles por sus clases base.
 
-Donde vemos este principio
+### Donde vemos este principio
 
-![SRP](ruta/a/imagen/srp.png)
+En nuestro proyecto, el cumplimiento de este principio se puede observar en la relación entre las clases Licenciatura, LicenciaturaRepository y LicenciaturaService.
 
-## **Bloques de código**
+La clase Licenciatura representa una entidad en el sistema.
+La clase LicenciaturaRepository extiende JpaRepository, que es una interfaz proporcionada por Spring Boot para realizar operaciones de persistencia y búsqueda en la base de datos.
+La clase LicenciaturaService utiliza LicenciaturaRepository para realizar la lógica del negocio.
+
+Aquí es donde se cumple el principio de Sustitución de Liskov:
+
+LicenciaturaRepository al extender JpaRepository puede ser utilizado en lugar de JpaRepository sin alterar el comportamiento esperado de las operaciones de persistencia y búsqueda.
+LicenciaturaService al utilizar LicenciaturaRepository como una dependencia, puede trabajar con la interfaz del repositorio sin conocer la implementación concreta. Esto significa que podríamos reemplazar la implementación actual del repositorio sin afectar el funcionamiento del servicio si dicha implementacion cumple con la interfaz LicenciaturaRepository, ya que está programado para trabajar con la interfaz y no depende de los detalles internos de la implementación.
+
+### **LicenciaturaService-LSP**
 ```java
-// Ejemplo de código SRP
-class MiClase {
-  // Implementación de la clase
+@Service
+@Log4j2
+public class LicenciaturaService {
+    @Autowired
+    private LicenciaturaRepository licenciaturaRepository;
+
+    public Licenciatura createLicenciatura(Licenciatura licenciatura) {
+        log.info("crea Licenciatura: " + licenciatura.toString());
+        return licenciaturaRepository.save(licenciatura);
+    }
+
+    public Licenciatura updateLicenciatura(Licenciatura licenciatura, String revoe) throws Exception {
+        Optional<Licenciatura> optionalLicenciatura = licenciaturaRepository.findByRevoe(revoe);
+        if (optionalLicenciatura.isPresent()) {
+            log.info("actualiza Licenciatura: " + licenciatura.toString());
+            return licenciaturaRepository.save(licenciatura);
+        }
+        throw new COAException("No existe la licenciatura con el revoe");
+    }
+
+    public List<Licenciatura> getAllLicenciaturas() throws Exception {
+        List<Licenciatura> Licenciaturaes = licenciaturaRepository.findAll();
+        if (Licenciaturaes.isEmpty()) {
+            throw new COAException("no se encontraron datos");
+        }
+        return Licenciaturaes;
+    }
+
+
+    public void deleteLicenciatura(Long id) {
+        licenciaturaRepository.deleteById(id);
+    }
 }
+
 ```
 ## Principio de Segregación de la Interfaz (ISP)
 
