@@ -13,7 +13,7 @@ Establece que una clase, componente o microservicio debe tener una única respon
 En la estructura que se está utilizando en el proyecto podemos ver paquetes que contienen clases con responsabilidades unicas.
 - Entity: Contiene las clases que representa entidades o modelos de datos de la aplicación.
 - Controller: Contiene las clases responsables de la interacción con el usuario. Reciben las solicitudes HTTP, procesan los datos necesarios y utilizan otros componentes (servicios) para realizar las operaciones requeridas. 
-- Repository: Contiene las clases que se encarga de hacer todas las conexiones a la base de datos.
+- Repository: Contiene las interfaces que se encarga de hacer todas las conexiones a la base de datos.
 - Service: Contiene las clases que implementan la lógica de negocio de la aplicación
 - DTO: Tiene las clases DTO de nuestras entidades donde nosotros vamos a poner solamente la información que vamos a necesitar o que queremos exponer, ya que no debemos exponer las entidades de la base de datos.
 
@@ -76,15 +76,23 @@ public class LicenciaturaController {
 
 > Las clases deban estar abiertas a la extensión y cerradas a la modificación.
 
-Donde vemos este principio
+En otras palabras, una clase debe diseñarse de tal manera que se pueda agregar nueva funcionalidad sin modificar el código existente.
 
-![SRP](ruta/a/imagen/srp.png)
+### Donde vemos este principio
 
-## **Bloques de código**
+En el paquete repository tenemos interfaces que cumplen con la misma responsabilidad, puedo dar un ejemplo con LicenciaturaRepository que cumple con la responsabilidad de realizar operaciones de búsqueda y persistencia en la base de datos para la entidad Licenciatura.  Si se necesita agregar una nueva consulta o método personalizado en el repositorio, se puede hacer agregando un nuevo método sin modificar los métodos existentes. Esto cumple con el principio de Abierto/Cerrado, ya que el repositorio está abierto para su extensión al permitir agregar nuevos métodos sin modificar los existentes.
+
+Además, la interfaz LicenciaturaRepository extiende la interfaz JpaRepository, que proporciona métodos predefinidos, como findAll(), save(), deleteById(), que están diseñados para ser extendidos y personalizados según las necesidades de cada entidad. Al extender JpaRepository, podemos agregar nuestros propios métodos personalizados sin modificar los métodos predefinidos existentes, lo que cumple con el principio de OCP.
+
+### **LicenciaturaRepository-OCP**
 ```java
-// Ejemplo de código SRP
-class MiClase {
-  // Implementación de la clase
+public interface LicenciaturaRepository extends JpaRepository <Licenciatura, Long> {
+    Optional<Licenciatura> findByRevoe(String revoe);
+
+    Licenciatura findByNombreAndRevoe (String nombre, String revoe);
+
+    @Query("select l from Licenciatura l where l.nombre = :param")
+    List<Licenciatura> findByOtherParams (@Param("param") String param);
 }
 ```
 ## Principio de Sustitución de Liskov (LSP)
