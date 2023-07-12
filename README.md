@@ -168,12 +168,19 @@ Al crear interfaces separadas para diferentes responsabilidades, nos aseguramos 
 
 ### Donde vemos este principio
 
-![SRP](ruta/a/imagen/srp.png)
+Esto podemos lograrlo usando interfaces y usando la inyeccion de dependecias en lugar de instanciar clases concretas. Esto podemos observarlo en las clases de servicio (como LicenciaturaService) dependen de interfaces (como LicenciaturaRepository) en lugar de depender directamente de las implementaciones concretas. Esto se logra mediante el uso de la anotación @Autowired para inyectar las dependencias necesarias en las clases correspondientes. La inversión de dependencia se aplica al utilizar la abstracción de la interfaz LicenciaturaRepository en lugar de depender de una implementación específica.
 
-## **Bloques de código**
+## **LicenciaturaService-DIP**
 ```java
-// Ejemplo de código SRP
-class MiClase {
-  // Implementación de la clase
+@Service
+@Log4j2
+public class LicenciaturaService {
+    @Autowired
+    private LicenciaturaRepository licenciaturaRepository;
+
+    public Licenciatura createLicenciatura(Licenciatura licenciatura) {
+        log.info("crea Licenciatura: " + licenciatura.toString());
+        return licenciaturaRepository.save(licenciatura);
+    }
 }
 ```
