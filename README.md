@@ -1,6 +1,6 @@
 # Principios SOLID en Spring Boot
 
-Breve descripción de los principios SOLID..
+Los principios SOLID son reglas y mejores prácticas para diseñar clases en programación orientada a objetos. Ayudan a comprender patrones y arquitecturas de software, y son esenciales para los desarrolladores. Estos principios nos guían hacia un código limpio, mantenible y flexible, promoviendo la modularidad, extensibilidad, reutilización y reducción de dependencias entre componentes. SOLID es un acrónimo de cinco principios que mejoran la mantenibilidad, escalabilidad y legibilidad del software.
 
 ## Principio de Responsabilidad Única (SRP)
 
